@@ -329,7 +329,7 @@
           1) Create a free Formspree form: https://formspree.io/
           2) Replace FORM_ACTION below with your generated endpoint (e.g. https://formspree.io/f/xvgqyqay)
         -->
-        <form id="contactForm" method="POST"  name="contact" data-netlify="true"          
+        <form id="contactForm" method="POST"  name="contact" data-netlify="true" netlify-honeypot="bot-field"          
 		class="grid grid-cols-1 md:grid-cols-2 gap-4">
 		
 		<!-- Hidden input required by Netlify -->
@@ -405,25 +405,32 @@
 	document.getElementById('formStatus').textContent = "Sending...";
 		});
     const form = document.getElementById('contactForm');
-    const status = document.getElementById('formStatus');
+	const status = document.getElementById('formStatus');
 
-    form.addEventListener('submit', async (e) => {
-      if (form.getAttribute('action') === 'FORM_ACTION') return; // Skip if user hasn't set Formspree yet
-      e.preventDefault();
-      status.textContent = 'Sending…';
-      try {
-        const data = new FormData(form);
-        const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
-        if (res.ok) {
-          status.textContent = 'Thanks! Your message has been sent.';
-          form.reset();
-        } else {
-          status.textContent = 'Something went wrong. Please try again later.';
-        }
-      } catch (err) {
-        status.textContent = 'Network error. Please try again.';
-      }
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  status.textContent = 'Sending…';
+
+  const formData = new FormData(form);
+
+  try {
+    const res = await fetch('/', {
+      method: 'POST',
+      body: new URLSearchParams(formData).toString(),
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     });
+
+    if (res.ok) {
+      status.textContent = 'Thanks! Your message has been sent.';
+      form.reset();
+    } else {
+      status.textContent = 'Something went wrong. Please try again later.';
+    }
+  } catch (err) {
+    status.textContent = 'Network error. Please try again.';
+  }
+});
+
   </script>
 </body>
 </html>
