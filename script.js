@@ -6,7 +6,7 @@ AOS.init({ once: true, duration: 600, offset: 40 });
 
 // Counter animation
 const counters = document.querySelectorAll('.counter');
-const speed = 300; // lower = faster
+const speed = 300;
 
 const runCounter = (counter) => {
   const target = +counter.getAttribute('data-target');
@@ -35,23 +35,20 @@ const io = new IntersectionObserver((entries) => {
 
 counters.forEach(c => io.observe(c));
 
-// Contact Form AJAX Submission
+// AJAX form submission
 const form = document.getElementById('contactForm');
 const status = document.getElementById('formStatus');
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   status.textContent = 'Sending…';
-
   const formData = new FormData(form);
-
   try {
     const res = await fetch('/', {
       method: 'POST',
       body: new URLSearchParams(formData).toString(),
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     });
-
     if (res.ok) {
       status.textContent = 'Thanks! Your message has been sent.';
       form.reset();

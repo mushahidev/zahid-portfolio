@@ -1,6 +1,3 @@
-/* Tailwind is still via CDN, but custom CSS goes here */
-
-/* Quickly tweak your brand accent here */
 :root{
   --accent: #0ea5e9; /* Tailwind sky-500 */
   --accent-600: #0284c7; /* sky-600 */
