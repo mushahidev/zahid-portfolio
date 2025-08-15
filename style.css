@@ -1,0 +1,18 @@
+/* Tailwind is still via CDN, but custom CSS goes here */
+
+/* Quickly tweak your brand accent here */
+:root{
+  --accent: #0ea5e9; /* Tailwind sky-500 */
+  --accent-600: #0284c7; /* sky-600 */
+}
+.accent{ color: var(--accent); }
+.accent-bg{ background-color: var(--accent); }
+.accent-bg-600{ background-color: var(--accent-600); }
+
+/* Smooth card hover */
+.card{ transition: transform .25s ease, box-shadow .25s ease; }
+.card:hover{ transform: translateY(-4px); box-shadow: 0 12px 30px rgba(2,8,23,.1); }
+
+/* Simple reveal on scroll (AOS fallback) */
+.reveal{ opacity: 0; transform: translateY(12px); transition: opacity .5s ease, transform .5s ease; }
+.reveal.show{ opacity: 1; transform: translateY(0); }
