@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+  <!-- ========================================================== ZAHID PORTFOLIO (Single HTML + Tailwind CSS ========================================================== ✅ What you get - Fully responsive, clean, professional portfolio for an e‑commerce accountant/bookkeeper - Matches your requested layout (rows with 3 or 2 columns) - Subtle animations, counters, icons, and a working contact form (via Formspree) ✅ How to use (Step‑by‑Step) 1) Open this file and replace sample text (email, phone, numbers, testimonials, etc.). 2) Replace the placeholder profile image (use any 400×400 portrait) -> Find "PROFILE IMAGE SOURCE" comment below. 3) Contact form: replace FORM_ACTION with your Formspree endpoint (see comment in the form). 4) Optional: Point your domain to this file using Netlify/Vercel or upload the html file anywhere. 5) Colors/branding: search for the class 'accent' in this file and adjust Tailwind classes if needed. ✅ Why Tailwind CDN? - No build step. You can just open this file and it works. ✅ Customize quickly - Change accent color by replacing 'accent' utility classes in the <style> block. - Update numbers in the counters by editing data-target attributes. ✅ File overview - Head: Tailwind + Inter font + AOS animations - Body: Sections in requested order. Each section clearly commented. NOTE: All layout rows are implemented as responsive grids: - Mobile: 1 column; Tablet/Desktop: 3 columns or 2 columns as requested. -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ZEE JAY — E‑Commerce Accountant</title>
@@ -15,6 +16,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased" style="font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';">
+
+  <!-- ============================ PAGE WRAPPER ============================= -->
 
   <!-- ============================ HEADER ============================= -->
   <header class="border-b border-slate-200 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-30">
@@ -155,76 +158,40 @@
       </div>
     </section>
 
-    <!-- ======= WORK ======= -->
-    <section class="pt-12" id="work">
-      <h2 class="text-2xl font-bold text-slate-700 mb-6" data-aos="fade-up">Work</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="50">
-        <div class="card bg-white rounded-2xl p-6 border border-slate-200">
-          <h3 class="text-lg font-semibold mb-2">Amazon Accounting</h3>
-          <p class="text-slate-600">Monthly bookkeeping, reconciliation, and reporting for Amazon sellers using QuickBooks and Xero.</p>
-        </div>
-        <div class="card bg-white rounded-2xl p-6 border border-slate-200">
-          <h3 class="text-lg font-semibold mb-2">Shopify & Etsy Store</h3>
-          <p class="text-slate-600">Setup, bookkeeping, and inventory tracking for Shopify and Etsy e-commerce stores.</p>
-        </div>
-        <div class="card bg-white rounded-2xl p-6 border border-slate-200">
-          <h3 class="text-lg font-semibold mb-2">Financial Reports</h3>
-          <p class="text-slate-600">P&L, balance sheet, and KPI dashboards for decision-making and business planning.</p>
-        </div>
-      </div>
-    </section>
+    <!-- ======= Work History ======= -->
+    <div class="card bg-white rounded-2xl p-6 border border-slate-200"> 	<h3 class="text-lg font-semibold mb-4">Work History</h3> 
+								<ul class="space-y-4"> 
+								<li> 
+									<div class="flex items-start justify-between"> 
+									<div> 
+										<p class="font-semibold">E‑Commerce Bookkeeper — Freelance</p> 
+										<p class="text-sm text-slate-500">Remote · 2021 — Present</p> 
+									</div> 
+										<span class="text-xs bg-slate-100 px-2 py-1 rounded">QBO/Xero</span> 
+									</div> 
+									<p class="text-slate-600 mt-2">Maintaining books for Amazon, Shopify and Etsy sellers, handling reconciliations, reporting and monthly close.</p> 
+								</li> 
+								<li> 
+									<div class="flex items-start justify-between"> 
+									<div> 
+										<p class="font-semibold">Junior Accountant — ABC Traders</p> 
+										<p class="text-sm text-slate-500">Bahawalpur · 2019 — 2021</p> 
+									</div> 
+										<span class="text-xs bg-slate-100 px-2 py-1 rounded">ERP</span> 
+									</div> 
+										<p class="text-slate-600 mt-2">Bank reconciliations, A/R & A/P schedules, monthly reporting, and support for audits.</p> 
+								</li> 
+								</ul> 
+								</div> <!-- Work Samples --> <div class="card bg-white rounded-2xl p-6 border border-slate-200"> <h3 class="text-lg font-semibold mb-4">Work Samples</h3> <div class="grid grid-cols-1 sm:grid-cols-2 gap-4"> <!-- Replace these placeholders with real screenshots / links --> <a href="#" class="block border border-slate-200 rounded-xl overflow-hidden"> <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop" alt="Report Sample" class="w-full h-40 object-cover"/> <div class="p-3 text-sm">Monthly P&L Report</div> </a> <a href="#" class="block border border-slate-200 rounded-xl overflow-hidden"> <img src="https://plus.unsplash.com/premium_photo-1679923906308-c26a0e2ca510?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Reconciliation" class="w-full h-40 object-cover"/> <div class="p-3 text-sm">Bank Reconciliation</div> </a> <a href="#" class="block border border-slate-200 rounded-xl overflow-hidden"> <img src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?q=80&w=800&auto=format&fit=crop" alt="Dashboard" class="w-full h-40 object-cover"/> <div class="p-3 text-sm">KPI Dashboard</div> </a> <a href="#" class="block border border-slate-200 rounded-xl overflow-hidden"> <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=800&auto=format&fit=crop" alt="Inventory" class="w-full h-40 object-cover"/> <div class="p-3 text-sm">Inventory & COGS</div> </a> </div> </div> </div> </section> 
 
     <!-- ======= EDUCATION ======= -->
-    <section class="pt-12" id="education">
-      <h2 class="text-2xl font-bold text-slate-700 mb-6" data-aos="fade-up">Education</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-up" data-aos-delay="50">
-        <div class="card bg-white rounded-2xl p-6 border border-slate-200">
-          <h3 class="text-lg font-semibold mb-2">BS Software Engineering</h3>
-          <p class="text-slate-600">The Islamia University of Bahawalpur, 2025</p>
-        </div>
-        <div class="card bg-white rounded-2xl p-6 border border-slate-200">
-          <h3 class="text-lg font-semibold mb-2">Diploma / Short Courses</h3>
-          <p class="text-slate-600">Accounting & Bookkeeping, QuickBooks, Xero & Wave Specialist</p>
-        </div>
-      </div>
-    </section>
+    <section class="pt-12" id="education"> <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-up"> <!-- Education --> <div class="card bg-white rounded-2xl p-6 border border-slate-200"> <h3 class="text-lg font-semibold mb-4">Education</h3> <ul class="space-y-4"> <li> <p class="font-semibold">B.Com (Hons) — Accounting & Finance</p> <p class="text-sm text-slate-500">The Islamia University of Bahawalpur</p> </li> </ul> </div> <!-- Certifications --> <div class="card bg-white rounded-2xl p-6 border border-slate-200"> <h3 class="text-lg font-semibold mb-4">Certifications</h3> <ul class="space-y-3 text-slate-700"> <li>• QuickBooks Online ProAdvisor</li> <li>• Xero Advisor Certified</li> <li>• Wave Accounting Specialist</li> </ul> </div> </div> </section>
 
     <!-- ======= TESTIMONIALS ======= -->
-    <section class="pt-12" id="testimonials">
-      <h2 class="text-2xl font-bold text-slate-700 mb-6" data-aos="fade-up">Testimonials</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-up" data-aos-delay="50">
-        <div class="card bg-white rounded-2xl p-6 border border-slate-200">
-          <p class="text-slate-600">“Zee Jay transformed our bookkeeping process. Highly professional and accurate work.”</p>
-          <p class="text-slate-700 mt-2 font-semibold">— Client A</p>
-        </div>
-        <div class="card bg-white rounded-2xl p-6 border border-slate-200">
-          <p class="text-slate-600">“Muhammad Zahid manages our Amazon accounting seamlessly. We are very satisfied.”</p>
-          <p class="text-slate-700 mt-2 font-semibold">— Client B</p>
-        </div>
-      </div>
-    </section>
+    <section class="pt-12" id="testimonials"> <div class="bg-white rounded-2xl p-6 border border-slate-200" data-aos="fade-up"> <h3 class="text-lg font-semibold mb-6">Testimonials</h3> <div class="grid grid-cols-1 md:grid-cols-3 gap-6"> <div class="card border border-slate-200 rounded-2xl p-5"> <p class="text-slate-700">“Zahid handled our Amazon books flawlessly. Reconciliations were always on time and reports were clear.”</p> <div class="text-sm text-slate-500 mt-3">— Sarah M., Amazon Seller (USA)</div> </div> <div class="card border border-slate-200 rounded-2xl p-5"> <p class="text-slate-700">“Great communication and deep knowledge of Shopify + QBO. Highly recommended.”</p> <div class="text-sm text-slate-500 mt-3">— Daniel K., DTC Brand (UK)</div> </div> <div class="card border border-slate-200 rounded-2xl p-5"> <p class="text-slate-700">“He cleaned up a year of messy data and delivered accurate statements fast.”</p> <div class="text-sm text-slate-500 mt-3">— Aisha R., Etsy Seller (UAE)</div> </div> </div> </div> </section>
 
     <!-- ======= CONTACT ======= -->
-    <section class="pt-12 pb-12" id="contact">
-      <h2 class="text-2xl font-bold text-slate-700 mb-6" data-aos="fade-up">Contact Me</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-up" data-aos-delay="50">
-        <form id="contactForm" class="card bg-white rounded-2xl p-6 border border-slate-200 space-y-4">
-          <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border border-slate-300 rounded-md" required>
-          <input type="email" name="email" placeholder="Your Email" class="w-full p-3 border border-slate-300 rounded-md" required>
-          <textarea name="message" placeholder="Your Message" class="w-full p-3 border border-slate-300 rounded-md" required></textarea>
-          <button type="submit" class="px-4 py-2 rounded-xl text-white accent-bg hover:accent-bg-600 transition">Send Message</button>
-          <p id="formStatus" class="text-sm text-slate-700 mt-2"></p>
-        </form>
-        <div class="card bg-white rounded-2xl p-6 border border-slate-200">
-          <h3 class="text-lg font-semibold mb-3">Other Contact Info</h3>
-          <ul class="space-y-2 text-slate-700">
-            <li>✉ <a href="mailto:zeejay19@gmail.com" class="hover:underline">zeejay19@gmail.com</a></li>
-            <li>☎ <a href="tel:+923047313646" class="hover:underline">+92 304 731 3646</a></li>
-            <li>📍 Ahmedpur East Bahawalpur, Pakistan</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+    <section class="pt-12 pb-20" id="contact"> <div class="bg-white rounded-2xl p-6 border border-slate-200" data-aos="fade-up"> <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6"> <h3 class="text-lg font-semibold">Let's Work Together</h3> <p class="text-sm text-slate-600">Typically replies within 24 hours</p> </div> <!-- FORM ACTION: 1) Create a free Formspree form: https://formspree.io/ 2) Replace FORM_ACTION below with your generated endpoint (e.g. https://formspree.io/f/xvgqyqay) --> <form id="contactForm" method="POST" name="contact" data-netlify="true" netlify-honeypot="bot-field" class="grid grid-cols-1 md:grid-cols-2 gap-4"> <!-- Hidden input required by Netlify --> <input type="hidden" name="contact" value="contact"> <div> <label class="text-sm text-slate-600">Name</label> <input required name="name" type="text" class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 p-3 outline-none focus:ring-2 focus:ring-sky-500" placeholder="Your name" /> </div> <div> <label class="text-sm text-slate-600">Email</label> <input required name="email" type="email" class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 p-3 outline-none focus:ring-2 focus:ring-sky-500" placeholder="you@example.com" /> </div> <div class="md:col-span-2"> <label class="text-sm text-slate-600">Message</label> <textarea required name="message" rows="4" class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 p-3 outline-none focus:ring-2 focus:ring-sky-500" placeholder="Tell me about your project…"></textarea> </div> <div class="md:col-span-2 flex items-center justify-between"> <p id="formStatus" class="text-sm text-slate-600"></p> <button type="submit" class="px-5 py-3 rounded-xl text-white accent-bg hover:accent-bg-600 transition font-medium">Send Message</button> </div> </form> </div> </section>
 
   </main>
 
