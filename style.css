@@ -13,3 +13,24 @@
 /* Simple reveal on scroll (AOS fallback) */
 .reveal{ opacity: 0; transform: translateY(12px); transition: opacity .5s ease, transform .5s ease; }
 .reveal.show{ opacity: 1; transform: translateY(0); }
+
+.swiper-pagination-bullet {
+  width: 6px !important;
+  height: 6px !important;
+  background: #0ea5e9 !important; /* Tailwind sky-500 */
+  opacity: 0.6;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #0284c7 !important; /* sky-600 */
+}
+
+/* Multi-step form step transitions */
+.form-step {
+  transition: all 0.3s ease;
+}
+
+/* Highlight invalid fields */
+.border-red-500 {
+  border-color: #f87171 !important;
+}
