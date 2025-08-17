@@ -102,7 +102,7 @@ const submitBtn = document.getElementById("submitBtn");
 const stepIndicator = document.getElementById("stepIndicator");
 const stepHeading = document.getElementById("stepHeading");
 
-// Array of step headings
+// Step headings
 const stepHeadings = [
   "Client Personal Info",
   "Business Info & Fiscal Year",
@@ -111,7 +111,7 @@ const stepHeadings = [
   "Requirements & Calculator"
 ];
 
-// Show the current step
+// Show step function
 function showStep(step) {
   steps.forEach((s, i) => s.classList.toggle("hidden", i !== step));
   prevBtn.classList.toggle("hidden", step === 0);
@@ -121,56 +121,59 @@ function showStep(step) {
   if (stepHeading) stepHeading.textContent = stepHeadings[step] || "";
 }
 
-// Utility: show field error message
-function showError(field, message) {
-  let error = field.nextElementSibling;
-  if (!error || !error.classList.contains("error-text")) {
-    error = document.createElement("p");
-    error.className = "error-text text-red-500 text-sm mt-1";
-    field.parentNode.insertBefore(error, field.nextSibling);
-  }
-  error.textContent = message;
-  field.classList.add("border-red-500");
-}
-
-// Clear field error
-function clearError(field) {
-  let error = field.nextElementSibling;
-  if (error && error.classList.contains("error-text")) {
-    error.textContent = "";
-  }
-  field.classList.remove("border-red-500");
-}
-
-// Handle Next button with validation
-nextBtn.addEventListener("click", () => {
+// Validate current step fields
+function validateStep() {
   const currentFields = steps[currentStep].querySelectorAll("input, textarea, select");
   let allValid = true;
 
   currentFields.forEach(field => {
-    clearError(field);
+    const errorId = field.name + "-error";
+    let errorEl = document.getElementById(errorId);
 
+    // Create error span if not exists
+    if (!errorEl) {
+      errorEl = document.createElement("span");
+      errorEl.id = errorId;
+      errorEl.className = "text-red-500 text-sm";
+      field.after(errorEl);
+    }
+
+    // Required field validation
     if (field.hasAttribute("required") && !field.value.trim()) {
       allValid = false;
-      showError(field, "This field is required");
-    } else if (field.type === "email" && field.value.trim()) {
+      field.classList.add("border-red-500");
+      errorEl.textContent = "This field is required.";
+    } 
+    // Email validation
+    else if (field.type === "email" && field.value.trim()) {
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailPattern.test(field.value)) {
         allValid = false;
-        showError(field, "Please enter a valid email");
+        field.classList.add("border-red-500");
+        errorEl.textContent = "Enter a valid email address.";
+      } else {
+        field.classList.remove("border-red-500");
+        errorEl.textContent = "";
       }
+    } 
+    else {
+      field.classList.remove("border-red-500");
+      errorEl.textContent = "";
     }
   });
 
-  if (!allValid) return;
+  return allValid;
+}
 
-  if (currentStep < steps.length - 1) {
+// Next button
+nextBtn.addEventListener("click", () => {
+  if (validateStep()) {
     currentStep++;
     showStep(currentStep);
   }
 });
 
-// Handle Previous button
+// Previous button
 prevBtn.addEventListener("click", () => {
   if (currentStep > 0) {
     currentStep--;
@@ -194,7 +197,7 @@ if (transactionsInput && rateInput) {
   rateInput.addEventListener("input", updateBill);
 }
 
-// Auto years calculation based on Fiscal Year input
+// Fiscal Year auto calculation
 const fiscalInput = document.querySelector("input[name='fiscal_year']");
 const numYearsInput = document.getElementById("num_years");
 
@@ -209,46 +212,42 @@ if (fiscalInput) {
   });
 }
 
-// Thank You Modal
+// Form submission
 const hireMeForm = document.getElementById("hireMeForm");
+const thankYouModal = document.getElementById("thankYouModal");
+const closeThankYou = document.getElementById("closeThankYou");
+
 if (hireMeForm) {
   hireMeForm.addEventListener("submit", (e) => {
-    e.preventDefault(); // prevent default submission
+    e.preventDefault();
 
-    // Final validation on submit
-    const allFields = hireMeForm.querySelectorAll("input, textarea, select");
-    let formValid = true;
-    allFields.forEach(field => {
-      clearError(field);
-      if (field.hasAttribute("required") && !field.value.trim()) {
-        formValid = false;
-        showError(field, "This field is required");
-      } else if (field.type === "email" && field.value.trim()) {
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(field.value)) {
-          formValid = false;
-          showError(field, "Please enter a valid email");
-        }
-      }
-    });
+    // Validate last step
+    if (!validateStep()) return;
 
-    if (!formValid) return;
+    // Submit to Netlify
+    const formData = new FormData(hireMeForm);
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString()
+    })
+    .then(() => {
+      // Show thank you modal
+      if (thankYouModal) thankYouModal.classList.remove("hidden");
 
-    // Show Thank You modal
-    document.getElementById("thankYouModal").classList.remove("hidden");
-
-    // Reset form and return to first step
-    hireMeForm.reset();
-    currentStep = 0;
-    showStep(currentStep);
+      // Reset form & go to first step
+      hireMeForm.reset();
+      currentStep = 0;
+      showStep(currentStep);
+    })
+    .catch((err) => console.error("Form submission error:", err));
   });
 }
 
-// Close Thank You modal
-const closeThankYou = document.getElementById("closeThankYou");
+// Close thank you modal
 if (closeThankYou) {
   closeThankYou.addEventListener("click", () => {
-    document.getElementById("thankYouModal").classList.add("hidden");
+    thankYouModal.classList.add("hidden");
   });
 }
 
